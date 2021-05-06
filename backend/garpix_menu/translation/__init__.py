@@ -1,1 +1,1 @@
-from .menu import MenuItemTranslationOptions
+from .menu import MenuItemTranslationOptions  # noqa

@@ -1,1 +1,1 @@
-from .menu_item import MenuItemAdmin
+from .menu_item import MenuItemAdmin  # noqa
