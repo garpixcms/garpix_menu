@@ -1,0 +1,2 @@
+recursive-include garpix_menu *
+recursive-include garpix_menu/templates *
