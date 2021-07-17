@@ -34,9 +34,9 @@ class MenuItem(MPTTModel):
         return self.title
 
     def get_link(self):
-        if self.page:
+        if self.page is not None:
             return self.page.get_absolute_url()
-        elif self.url:
+        elif self.url is not None or self.url != '':
             if self.url.startswith('/'):
                 current_language_code_url_prefix = translation.get_language()
                 if current_language_code_url_prefix == settings.LANGUAGE_CODE:
