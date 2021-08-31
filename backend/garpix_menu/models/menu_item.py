@@ -3,6 +3,7 @@ from django.utils import translation
 from django.conf import settings
 from mptt.models import MPTTModel, TreeForeignKey
 from garpix_page.models import BasePage
+from garpix_utils.managers import ActiveManager
 
 
 class MenuItem(MPTTModel):
@@ -22,6 +23,7 @@ class MenuItem(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True, verbose_name='Родительский пункт меню', on_delete=models.CASCADE)
     is_current = False
     is_current_full = False
+    active_manager = ActiveManager()
 
     class Meta:
         verbose_name = 'Пункт меню'
