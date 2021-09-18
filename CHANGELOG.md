@@ -1,3 +1,7 @@
+### 1.2.0 (18.09.2021)
+
+- Added `mixins.LinkMixin` (for `garpix_page` and external urls).
+
 ### 1.1.0 (08.09.2021)
 
 - Added the ability to filter active_manager for the MenuItem model
