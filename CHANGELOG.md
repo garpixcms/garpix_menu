@@ -1,3 +1,7 @@
+### 1.4.0 (19.09.2021)
+
+- Utils for SPA menus.
+
 ### 1.3.0 (19.09.2021)
 
 - Used model_to_dict for menu_processor.
