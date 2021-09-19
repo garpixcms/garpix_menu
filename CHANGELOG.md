@@ -1,3 +1,7 @@
+### 1.5.0 (19.09.2021)
+
+- Added `is_current` and `is_current_full`.
+
 ### 1.4.0 (19.09.2021)
 
 - Utils for SPA menus.
