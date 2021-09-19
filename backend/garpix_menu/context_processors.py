@@ -3,6 +3,7 @@
 """
 from django.conf import settings
 from garpix_menu.models import MenuItem
+from django.forms.models import model_to_dict
 
 
 def check_is_home(url):
@@ -27,8 +28,8 @@ def menu_processor(request):
     }
     for menu_type_arr in settings.CHOICE_MENU_TYPES:
         menu = MenuItem.objects.filter(is_active=True, menu_type=menu_type_arr[0], parent=None)
-        context['menus'][menu_type_arr[0]] = menu.order_by('sort', 'title')
-        for menu_item in context['menus'][menu_type_arr[0]]:
+        context['menus'][menu_type_arr[0]] = []
+        for menu_item in menu.order_by('sort', 'title'):
             if menu_item.get_link() in (current_path, current_path_without_slash):
                 menu_item.is_current = True
                 menu_item.is_current_full = True
@@ -38,4 +39,5 @@ def menu_processor(request):
             elif menu_item.url and menu_item.url.endswith(current_path):
                 if not check_is_home(menu_item.get_link()):
                     menu_item.is_current = True
+            context['menus'][menu_type_arr[0]].append(model_to_dict(menu_item))
     return context

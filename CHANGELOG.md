@@ -1,3 +1,7 @@
+### 1.3.0 (19.09.2021)
+
+- Used model_to_dict for menu_processor.
+
 ### 1.2.0 (18.09.2021)
 
 - Added `mixins.LinkMixin` (for `garpix_page` and external urls).
