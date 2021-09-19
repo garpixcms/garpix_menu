@@ -1,3 +1,7 @@
+### 1.5.1 (19.09.2021)
+
+- Removed elements from model_to_dict :)
+
 ### 1.5.0 (19.09.2021)
 
 - Added `is_current` and `is_current_full`.
