@@ -193,3 +193,6 @@ MENU_TYPES = {
 }
 
 CHOICE_MENU_TYPES = [(k, v['title']) for k, v in MENU_TYPES.items()]
+
+MENU_ICON_ALLOWED_TYPES = ['bmp', 'svg', 'jpg', 'png', 'jpeg']
+MENU_ICON_MAX_SIZE = 1024 * 1024 * 1

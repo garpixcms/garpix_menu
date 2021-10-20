@@ -1,8 +1,10 @@
 from django.db import models
 from django.conf import settings
+from garpix_utils.file import get_file_path
 from mptt.models import MPTTModel, TreeForeignKey
 from garpix_utils.managers import ActiveManager
 from ..mixins import LinkMixin
+from ..validators import validate_type, validate_size
 
 
 class MenuItem(LinkMixin, MPTTModel):
@@ -11,6 +13,10 @@ class MenuItem(LinkMixin, MPTTModel):
     """
     title_for_admin = models.CharField(max_length=100, blank=True, default='', verbose_name='Название для админа')
     title = models.CharField(max_length=100, verbose_name='Название')
+    icon = models.FileField(
+        upload_to=get_file_path, default='', verbose_name='Иконка', blank=True,
+        validators=[validate_type, validate_size]
+    )
     menu_type = models.CharField(default='', max_length=100, choices=settings.CHOICE_MENU_TYPES, verbose_name='Тип меню')
     is_active = models.BooleanField(default=True, verbose_name='Включено')
     target_blank = models.BooleanField(default=False, verbose_name='Открывать в новом окне')
