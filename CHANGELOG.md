@@ -1,3 +1,9 @@
+### 1.6.0 (29.10.2021)
+
+- Added icon.
+- Added settings.py variable `MENU_ICON_ALLOWED_TYPES`.
+- Added settings.py variable `MENU_ICON_MAX_SIZE`.
+
 ### 1.5.1 (19.09.2021)
 
 - Removed elements from model_to_dict :)
