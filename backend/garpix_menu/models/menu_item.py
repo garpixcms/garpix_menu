@@ -14,7 +14,7 @@ class MenuItem(LinkMixin, MPTTModel):
     title_for_admin = models.CharField(max_length=100, blank=True, default='', verbose_name='Название для админа')
     title = models.CharField(max_length=100, verbose_name='Название')
     icon = models.FileField(
-        upload_to=get_file_path, default='', verbose_name='Иконка', blank=True,
+        upload_to=get_file_path, verbose_name='Иконка', blank=True, null=True,
         validators=[validate_type, validate_size]
     )
     menu_type = models.CharField(default='', max_length=100, choices=settings.CHOICE_MENU_TYPES, verbose_name='Тип меню')
