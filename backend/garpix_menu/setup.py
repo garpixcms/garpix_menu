@@ -8,7 +8,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='garpix_menu',
-    version='1.6.1',
+    version='1.6.2',
     description='',
     long_description=long_description,
     author='Garpix LTD',
