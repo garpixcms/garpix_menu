@@ -1,3 +1,7 @@
+### 1.7.0 (11.01.2022)
+
+- Added hash in LinkMixin
+
 ### 1.6.1-1.6.2 (08.11.2021)
 
 - Bugfix icon.
