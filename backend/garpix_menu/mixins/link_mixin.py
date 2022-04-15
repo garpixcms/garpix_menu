@@ -24,8 +24,8 @@ class LinkMixin(models.Model):
                 if current_language_code_url_prefix == settings.LANGUAGE_CODE:
                     return "{}{}".format(self.url, self.hash)
                 return "/{}{}{}".format(current_language_code_url_prefix, self.url, self.hash)
-            else:
-                return self.url
+        elif self.hash is not None and self.hash != '':
+            return self.hash
         else:
             return '#'
     get_link.short_description = 'URL'
