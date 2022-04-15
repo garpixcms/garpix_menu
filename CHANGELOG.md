@@ -1,3 +1,7 @@
+### (15.04.2022)
+
+- Added hash on current page support
+
 ### 1.7.0 (11.01.2022)
 
 - Added hash in LinkMixin
