@@ -1,4 +1,4 @@
-### (15.04.2022)
+### 1.8.0 (15.04.2022)
 
 - Added hash on current page support
 
