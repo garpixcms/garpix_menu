@@ -18,6 +18,8 @@ class MenuItemAdmin(TabbedTranslationAdmin, DraggableMPTTAdmin):
     list_editable = ('sort',)
     list_display_links = ('indented_title',)
 
+    filter_horizontal = ['sites']
+
     def _rebuild(self):
         try:
             self.model.objects.rebuild()

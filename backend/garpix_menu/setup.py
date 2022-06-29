@@ -34,5 +34,6 @@ setup(
         'django-mptt >= 0.9.1',
         'django-modeltranslation >= 0.16.2',
         'garpix_page >= 1.0.0',
+        'garpix_utils >= 1.5.0'
     ],
 )

@@ -1,10 +1,13 @@
+from django.contrib.sites.models import Site
 from django.db import models
 from django.conf import settings
+from garpix_page.models.base_page import get_all_sites
 from garpix_utils.file import get_file_path
 from mptt.models import MPTTModel, TreeForeignKey
 from garpix_utils.managers import ActiveManager
 from ..mixins import LinkMixin
 from ..validators import validate_type, validate_size
+from garpix_utils.managers import GCurrentSiteManager
 
 
 class MenuItem(LinkMixin, MPTTModel):
@@ -24,9 +27,11 @@ class MenuItem(LinkMixin, MPTTModel):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
     sort = models.IntegerField(default=100, verbose_name='Сортировка', help_text='Чем меньше число, тем выше будет элемент в списке.')
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True, verbose_name='Родительский пункт меню', on_delete=models.CASCADE)
+    sites = models.ManyToManyField(Site, default=get_all_sites, verbose_name='Сайты для отображения')
     is_current = False
     is_current_full = False
     active_manager = ActiveManager()
+    on_site = GCurrentSiteManager()
 
     class Meta:
         verbose_name = 'Пункт меню'
