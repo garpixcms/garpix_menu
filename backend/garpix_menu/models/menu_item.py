@@ -1,7 +1,7 @@
 from django.contrib.sites.models import Site
 from django.db import models
 from django.conf import settings
-from garpix_page.models.base_page import get_all_sites
+from garpix_page.utils.all_sites import get_all_sites
 from garpix_utils.file import get_file_path
 from mptt.models import MPTTModel, TreeForeignKey
 from garpix_utils.managers import ActiveManager

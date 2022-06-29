@@ -10,7 +10,7 @@ coverage = "*"
 twine = "*"
 m2r = "*"
 garpix-qa = "*"
-garpix-page = "*"
+garpix-page = "==2.25.0"
 garpix-utils = "==1.5.0"
 django = "==3.1"
 
