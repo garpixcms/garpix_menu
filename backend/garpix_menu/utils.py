@@ -36,7 +36,7 @@ def get_menus(current_path):
             menus[menu_type_arr[0]][-1]['is_current_full'] = menu_item.is_current_full
             try:
                 menus[menu_type_arr[0]][-1]['icon'] = menu_item.icon.url
-            except:
+            except Exception:
                 menus[menu_type_arr[0]][-1]['icon'] = None
             menus[menu_type_arr[0]][-1].pop('page', None)
             menus[menu_type_arr[0]][-1].pop('title_for_admin', None)
