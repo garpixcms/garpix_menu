@@ -1,3 +1,7 @@
+### 1.10.0 (28.07.2022)
+
+- Clone object action to admin added
+
 ### 1.9.0 (29.06.2022)
 
 - Multisite support added

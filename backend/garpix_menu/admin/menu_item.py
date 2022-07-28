@@ -8,8 +8,8 @@ from modeltranslation.admin import TabbedTranslationAdmin
 
 @admin.register(MenuItem)
 class MenuItemAdmin(TabbedTranslationAdmin, DraggableMPTTAdmin):
-    actions = ('rebuild',)
-    list_filter = ('parent', 'is_active')
+    actions = ('rebuild', 'clone_object')
+    list_filter = ('parent', 'is_active', 'menu_type')
     list_display = ('tree_actions', 'indented_title', 'title', 'menu_type', 'get_link', 'target_blank', 'is_active', 'sort')
     formfield_overrides = {
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},
@@ -32,6 +32,15 @@ class MenuItemAdmin(TabbedTranslationAdmin, DraggableMPTTAdmin):
         """
         self._rebuild()
     rebuild.short_description = 'Пересобрать пункты раздела'
+
+    def clone_object(self, request, queryset):
+        """Копирование(клонирование) выбранных объектов - action"""
+        for obj in queryset:
+            obj.pk = None
+            obj.id = None
+            obj.save()
+
+    clone_object.short_description = 'Клонировать объект(ы)'
 
     def save_model(self, request, obj, form, change):
         # пересобрать МПТТ объекты
