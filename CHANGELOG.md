@@ -1,6 +1,7 @@
-### 1.10.0 (28.07.2022)
+### 1.10.0 (16.08.2022)
 
 - Clone object action to admin added
+- Multisite support added to context processor 
 
 ### 1.9.0 (29.06.2022)
 
