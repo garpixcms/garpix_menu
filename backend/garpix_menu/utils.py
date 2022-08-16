@@ -17,7 +17,7 @@ def get_menus(current_path):
 
     menus = {}
     for menu_type_arr in settings.CHOICE_MENU_TYPES:
-        menu = MenuItem.objects.filter(is_active=True, menu_type=menu_type_arr[0], parent=None)
+        menu = MenuItem.on_site.filter(is_active=True, menu_type=menu_type_arr[0], parent=None)
         menus[menu_type_arr[0]] = []
         for menu_item in menu.order_by('sort', 'title'):
             link = menu_item.get_link()
