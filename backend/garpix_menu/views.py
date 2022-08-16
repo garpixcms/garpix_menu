@@ -6,7 +6,7 @@ from .serializers import MenuItemSerializer
 
 
 class MenuItemViewSet(ModelViewSet):
-    queryset = MenuItem.objects.all()
+    queryset = MenuItem.on_site.all()
     serializer_class = MenuItemSerializer
     permission_classes = [IsAdminUser, ]
     filter_backends = (DjangoFilterBackend, )
