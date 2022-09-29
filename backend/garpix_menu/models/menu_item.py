@@ -20,7 +20,6 @@ class MenuItem(LinkMixin, MPTTModel):
         upload_to=get_file_path, verbose_name='Иконка', blank=True, null=True,
         validators=[validate_type, validate_size]
     )
-    file = models.FileField(upload_to=get_file_path, blank=True, null=True, verbose_name='Файл')
     menu_type = models.CharField(default='', max_length=100, choices=settings.CHOICE_MENU_TYPES, verbose_name='Тип меню')
     is_active = models.BooleanField(default=True, verbose_name='Включено')
     target_blank = models.BooleanField(default=False, verbose_name='Открывать в новом окне')
@@ -47,9 +46,3 @@ class MenuItem(LinkMixin, MPTTModel):
 
     def get_menu_params(self):
         return settings.MENU_TYPES[self.menu_type]
-
-    def get_link(self):
-        link = super().get_link()
-        if self.file is None:
-            return link
-        return self.file.url
