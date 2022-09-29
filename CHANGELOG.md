@@ -1,3 +1,6 @@
+### 1.11.0 (12.09.2022)
+- Added file link
+
 ### 1.10.0 (16.08.2022)
 
 - Clone object action to admin added
