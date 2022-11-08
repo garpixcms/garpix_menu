@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.forms.models import model_to_dict
-from garpix_menu.models import MenuItem
 
 
 def check_is_home(url):
@@ -30,6 +29,7 @@ def get_menu_item_dict(menu_item, current_path):
 
 
 def get_menus(current_path):
+    from garpix_menu.models import MenuItem
 
     menus = {}
     menu_items = MenuItem.on_site.filter(is_active=True, parent=None).order_by('sort', 'title')
