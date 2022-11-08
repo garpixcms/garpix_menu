@@ -46,3 +46,6 @@ class MenuItem(LinkMixin, MPTTModel):
 
     def get_menu_params(self):
         return settings.MENU_TYPES[self.menu_type]
+
+    def get_children(self):
+        return MenuItem.on_site.filter(parent=self, is_active=True)

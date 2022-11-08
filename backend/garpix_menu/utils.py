@@ -10,7 +10,7 @@ def check_is_home(url):
     return url in urls
 
 
-def get_menu_item_dict(menu_item, current_path, current_path_without_slash, menu_type, child_menu_items):
+def get_menu_item_dict(menu_item, current_path, current_path_without_slash):
     context = model_to_dict(menu_item)
     link = menu_item.get_link()
     if link in (current_path, current_path_without_slash):
@@ -26,6 +26,7 @@ def get_menu_item_dict(menu_item, current_path, current_path_without_slash, menu
     context['get_link'] = link
     context['is_current'] = menu_item.is_current
     context['is_current_full'] = menu_item.is_current_full
+    context['object'] = menu_item
     try:
         context['icon'] = menu_item.icon.url
     except:
@@ -38,13 +39,6 @@ def get_menu_item_dict(menu_item, current_path, current_path_without_slash, menu
 
     context.pop('page', None)
     context.pop('title_for_admin', None)
-    context.pop('sites', None)
-
-    children = list(filter(lambda item: item.menu_type == menu_type and item.parent == menu_item, child_menu_items))
-
-    context['children'] = []
-    for child in children:
-        context['children'].append(get_menu_item_dict(child, current_path, current_path_without_slash, menu_type, child_menu_items))
 
     return context
 
@@ -55,12 +49,11 @@ def get_menus(current_path):
         current_path_without_slash = current_path_without_slash[0:-1]
 
     menus = {}
-    menu_items = MenuItem.objects.filter(is_active=True, parent=None).order_by('sort', 'title')
-    child_menu_items = MenuItem.objects.filter(is_active=True, parent__isnull=False).order_by('sort', 'title')
+    menu_items = MenuItem.on_site.filter(is_active=True, parent=None).order_by('sort', 'title')
     for menu_type_arr in settings.CHOICE_MENU_TYPES:
         menu = list(filter(lambda item: item.menu_type == menu_type_arr[0], menu_items))
         menus[menu_type_arr[0]] = []
         for menu_item in menu:
-            menus[menu_type_arr[0]].append(get_menu_item_dict(menu_item, current_path, current_path_without_slash, menu_type_arr[0], child_menu_items))
+            menus[menu_type_arr[0]].append(get_menu_item_dict(menu_item, current_path, current_path_without_slash))
 
     return menus
