@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'tabbed_admin',
     'garpix_page',
     'app',
     'garpix_qa',
