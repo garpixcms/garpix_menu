@@ -51,9 +51,13 @@ class MenuItem(LinkMixin, MPTTModel):
     def get_active_children(self):
         return MenuItem.on_site.filter(parent=self, is_active=True)
 
-    def get_is_current(self, current_path, current_path_without_slash):
+    def get_is_current(self, current_path):
 
         link = self.get_link()
+
+        current_path_without_slash = current_path
+        if current_path_without_slash[-1] == '/':
+            current_path_without_slash = current_path_without_slash[0:-1]
 
         if link in (current_path, current_path_without_slash):
             return True
@@ -66,5 +70,10 @@ class MenuItem(LinkMixin, MPTTModel):
 
         return False
 
-    def get_is_current_full(self, current_path, current_path_without_slash):
+    def get_is_current_full(self, current_path):
+
+        current_path_without_slash = current_path
+        if current_path_without_slash[-1] == '/':
+            current_path_without_slash = current_path_without_slash[0:-1]
+
         return self.get_link() in (current_path, current_path_without_slash)

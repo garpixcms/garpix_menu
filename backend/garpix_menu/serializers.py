@@ -16,20 +16,14 @@ class MenuItemSerializer(ModelSerializer):
         current_path = self.context.get('current_path', None)
 
         if current_path:
-            current_path_without_slash = current_path
-            if current_path_without_slash[-1] == '/':
-                current_path_without_slash = current_path_without_slash[0:-1]
-            return instance.get_is_current(current_path, current_path_without_slash)
+            return instance.get_is_current(current_path)
         return False
 
     def get_is_current_full(self, instance):
         current_path = self.context.get('current_path', None)
 
         if current_path:
-            current_path_without_slash = current_path
-            if current_path_without_slash[-1] == '/':
-                current_path_without_slash = current_path_without_slash[0:-1]
-            return instance.get_is_current_full(current_path, current_path_without_slash)
+            return instance.get_is_current_full(current_path)
         return False
 
     def get_field_names(self, declared_fields, info):

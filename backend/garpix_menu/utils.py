@@ -10,13 +10,13 @@ def check_is_home(url):
     return url in urls
 
 
-def get_menu_item_dict(menu_item, current_path, current_path_without_slash):
+def get_menu_item_dict(menu_item, current_path):
     context = model_to_dict(menu_item)
     link = menu_item.get_link()
 
     context['get_link'] = link
-    context['is_current'] = menu_item.get_is_current(current_path, current_path_without_slash)
-    context['is_current_full'] = menu_item.get_is_current_full(current_path, current_path_without_slash)
+    context['is_current'] = menu_item.get_is_current(current_path)
+    context['is_current_full'] = menu_item.get_is_current_full(current_path)
     context['object'] = menu_item
     try:
         context['icon'] = menu_item.icon.url
@@ -30,9 +30,6 @@ def get_menu_item_dict(menu_item, current_path, current_path_without_slash):
 
 
 def get_menus(current_path):
-    current_path_without_slash = current_path
-    if current_path_without_slash[-1] == '/':
-        current_path_without_slash = current_path_without_slash[0:-1]
 
     menus = {}
     menu_items = MenuItem.on_site.filter(is_active=True, parent=None).order_by('sort', 'title')
@@ -40,6 +37,6 @@ def get_menus(current_path):
         menu = list(filter(lambda item: item.menu_type == menu_type_arr[0], menu_items))
         menus[menu_type_arr[0]] = []
         for menu_item in menu:
-            menus[menu_type_arr[0]].append(get_menu_item_dict(menu_item, current_path, current_path_without_slash))
+            menus[menu_type_arr[0]].append(get_menu_item_dict(menu_item, current_path))
 
     return menus
