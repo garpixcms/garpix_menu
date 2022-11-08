@@ -5,10 +5,32 @@ from .models import MenuItem
 
 class MenuItemSerializer(ModelSerializer):
     link = SerializerMethodField()
+    is_current = SerializerMethodField()
+    is_current_full = SerializerMethodField()
 
     def get_link(self, instance):
         request = self.context.get('request', None)
         return instance.get_link(request)
+
+    def get_is_current(self, instance):
+        current_path = self.context.get('current_path', None)
+
+        if current_path:
+            current_path_without_slash = current_path
+            if current_path_without_slash[-1] == '/':
+                current_path_without_slash = current_path_without_slash[0:-1]
+            return instance.get_is_current(current_path, current_path_without_slash)
+        return False
+
+    def get_is_current_full(self, instance):
+        current_path = self.context.get('current_path', None)
+
+        if current_path:
+            current_path_without_slash = current_path
+            if current_path_without_slash[-1] == '/':
+                current_path_without_slash = current_path_without_slash[0:-1]
+            return instance.get_is_current_full(current_path, current_path_without_slash)
+        return False
 
     def get_field_names(self, declared_fields, info):
         expanded_fields = super().get_field_names(declared_fields, info)
@@ -21,7 +43,7 @@ class MenuItemSerializer(ModelSerializer):
     class Meta:
         model = MenuItem
         exclude = ('title_for_admin', 'sites', 'page')
-        extra_fields = ['link']
+        extra_fields = ['link', 'is_current', 'is_current_full']
 
 
 class MenuItemWithChildrenSerializer(MenuItemSerializer):
