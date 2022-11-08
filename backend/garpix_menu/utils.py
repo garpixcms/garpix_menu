@@ -32,11 +32,6 @@ def get_menu_item_dict(menu_item, current_path, current_path_without_slash):
     except:
         context['icon'] = None
 
-    try:
-        context['file'] = menu_item.file.path
-    except:
-        context['file'] = None
-
     context.pop('page', None)
     context.pop('title_for_admin', None)
 
