@@ -1,3 +1,9 @@
+### 1.12.0 (08.11.2022)
+
+- MenuItem instance added to menu items in context processor (`object` key)
+- `get_active_children` method added to MenuItem model.
+- `MenuItemWithChildrenSerializer` serializer added.
+
 ### 1.11.0 (12.09.2022)
 - Added file link
 
