@@ -17,8 +17,10 @@ class LinkMixin(models.Model):
     class Meta:
         abstract = True
 
-    def get_link(self):
+    def get_link(self, request=None):
         if self.file not in (None, ''):
+            if request:
+                return request.build_absolute_uri(self.file.url)
             return self.file.url
         elif self.page is not None:
             return f"{self.page.get_absolute_url()}{self.hash}"
