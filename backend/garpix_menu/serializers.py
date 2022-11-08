@@ -14,7 +14,7 @@ class MenuItemWithChildrenSerializer(ModelSerializer):
     children = SerializerMethodField()
 
     def get_children(self, instance):
-        items = instance.get_children()
+        items = instance.get_active_children()
         return MenuItemWithChildrenSerializer(items, many=True).data
 
     def get_field_names(self, declared_fields, info):
