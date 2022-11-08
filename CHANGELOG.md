@@ -1,3 +1,8 @@
+### 1.12.0 (08.11.2022)
+
+- Children added to menu items in context processor (`children` key)
+- `MenuItemWithChildrenSerializer` serializer added.
+
 ### 1.10.0 (16.08.2022)
 
 - Clone object action to admin added
