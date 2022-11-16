@@ -1,3 +1,7 @@
+### 1.13.0 (16.11.2022)
+
+- Page in admin is using as `raw_id_fields`
+
 ### 1.12.0 - 1.12.1 (08.11.2022)
 
 - MenuItem instance added to menu items in context processor (`object` key)
