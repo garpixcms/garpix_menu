@@ -17,6 +17,7 @@ class MenuItemAdmin(TabbedTranslationAdmin, DraggableMPTTAdmin):
     search_fields = ('title',)
     list_editable = ('sort',)
     list_display_links = ('indented_title',)
+    raw_id_fields = ['page']
 
     filter_horizontal = ['sites']
 
