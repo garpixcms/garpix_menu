@@ -34,22 +34,27 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'tabbed_admin',
     'modeltranslation',
     'polymorphic_tree',
     'polymorphic',
     'mptt',
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'tabbed_admin',
+    'django.contrib.sitemaps',
+    'rest_framework',
+    'garpix_package',
+    'garpix_utils',
     'garpix_page',
     'app',
-    'garpix_qa',
+    'eqator',
     'garpix_menu',
+    'garpix_admin_lock',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -75,7 +81,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'garpix_menu.context_processors.menu_processor',
             ],
         },
     },
@@ -148,36 +153,35 @@ USE_DEFAULT_LANGUAGE_PREFIX = False
 
 LANGUAGES = (
     ('en', 'English'),
+    ('ru', 'Russian')
 )
 
 # migrations
 
 MIGRATION_MODULES = {
     'garpix_page': 'app.migrations.garpix_page',
+    'garpix_admin_lock': 'app.migrations.garpix_admin_lock',
     'garpix_menu': 'app.migrations.garpix_menu',
 }
 
-# garpix page
+GARPIX_PAGE_ADMIN_LIST_PER_PAGE = 25
+GARPIX_PAGE_GLOBAL_CONTEXT = 'garpix_page.contexts.global_context.global_context'
 
-COMMON_CONTEXT = 'garpix_page.contexts.default.context'
+API_URL = 'api'
 
-PAGE_TYPE_HOME = 'HOME'
-PAGE_TYPE_DEFAULT = 'DEFAULT'
-
-PAGE_TYPES = {
-    PAGE_TYPE_HOME: {
-        'title': 'Home page',
-        'template': 'pages/default.html',
-        'context': 'garpix_page.contexts.default.context'  # empty context, contains only object and request
-    },
-    PAGE_TYPE_DEFAULT: {
-        'title': 'Default page',
-        'template': 'pages/default.html',
-        'context': 'garpix_page.contexts.default.context'  # empty context, contains only object and request
-    },
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'app_cache_table',
+    }
 }
 
-CHOICES_PAGE_TYPES = [(k, v['title']) for k, v in PAGE_TYPES.items()]
+TEST_COVERAGE_RATE = 40
+
+GRAPESJS_SAVE_ASSETS_TO_FILE = True
+
+GARPIXCMS_CELERY_SETTINGS = 'app.celery.app'
+GARPIX_PAGE_CHILDREN_LEN = 10
 
 # menu
 

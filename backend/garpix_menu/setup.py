@@ -8,7 +8,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='garpix_menu',
-    version='1.13.0',
+    version='1.14.0-rc1',
     description='',
     long_description=long_description,
     author='Garpix LTD',
@@ -33,7 +33,7 @@ setup(
         'Django >= 1.11',
         'django-mptt >= 0.9.1',
         'django-modeltranslation >= 0.16.2',
-        'garpix_page >= 2.25.0',
-        'garpix_utils >= 1.5.0'
+        'garpix_page >= 2.42.0-rc2',
+        'garpix_utils >= 1.8.0'
     ],
 )

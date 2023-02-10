@@ -38,6 +38,7 @@ class MenuItemSerializer(ModelSerializer):
         model = MenuItem
         exclude = (
             'title_for_admin',
+            'subpage_url',
             'sites',
             'page',
             'lft',

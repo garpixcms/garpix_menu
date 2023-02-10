@@ -1,3 +1,9 @@
+### 1.14.0-rc1 (10.02.2023)
+
+- Upgrade `garpix_page` to version 2.42.0-rc2.
+- `subpage_url` parameter added.
+- `MenuItemSerializer` updated.
+
 ### 1.13.0 (16.11.2022)
 
 - Page in admin is using as `raw_id_fields`
