@@ -36,7 +36,17 @@ class MenuItemSerializer(ModelSerializer):
 
     class Meta:
         model = MenuItem
-        exclude = ('title_for_admin', 'sites', 'page')
+        exclude = (
+            'title_for_admin',
+            'sites',
+            'page',
+            'lft',
+            'rght',
+            'tree_id',
+            'level',
+            'created_at',
+            'updated_at',
+        )
         extra_fields = ['link', 'is_current', 'is_current_full']
 
 
