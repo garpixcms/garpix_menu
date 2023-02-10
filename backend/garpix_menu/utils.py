@@ -19,7 +19,7 @@ def get_menu_item_dict(menu_item, current_path):
     context['object'] = menu_item
     try:
         context['icon'] = menu_item.icon.url
-    except:
+    except Exception:
         context['icon'] = None
 
     context.pop('page', None)

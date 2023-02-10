@@ -10,6 +10,7 @@ class LinkMixin(models.Model):
     Пункты меню.
     """
     page = models.ForeignKey(BasePage, null=True, blank=True, verbose_name='Страница, на которую ведет пункт меню', help_text='Если этот пункт не выбран, то будет использовано следующее поле "Внешний URL"', on_delete=models.CASCADE)
+    subpage_url = models.CharField(max_length=256, null=True, blank=True, verbose_name='URL подстраницы (при наличии)')
     url = models.CharField(max_length=1000, null=True, blank=True, verbose_name='Внешний URL')
     hash = models.CharField(max_length=256, default='', blank=True, verbose_name='Якорь', help_text='Если хотите дать ссылку на конкретный элемент страницы. Например - #example')
     file = models.FileField(upload_to=get_file_path, blank=True, null=True, verbose_name='Файл')
@@ -23,7 +24,8 @@ class LinkMixin(models.Model):
                 return request.build_absolute_uri(self.file.url)
             return self.file.url
         elif self.page is not None:
-            return f"{self.page.get_absolute_url()}{self.hash}"
+            subpage_url = self.subpage_url if self.subpage_url else ''
+            return f"{self.page.get_absolute_url()}{subpage_url}{self.hash}"
         elif self.url is not None and self.url != '':
             if self.url.startswith('/'):
                 current_language_code_url_prefix = translation.get_language()
