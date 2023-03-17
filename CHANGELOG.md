@@ -1,3 +1,7 @@
+### 1.15.0 (17.03.2023)
+
+- Prefetching relations in `utils.get_menus`
+
 ### 1.14.0 (28.02.2023)
 
 - Upgrade `garpix_page` to version 2.42.0.
@@ -25,7 +29,7 @@
 ### 1.10.0 (16.08.2022)
 
 - Clone object action to admin added
-- Multisite support added to context processor 
+- Multisite support added to context processor
 
 ### 1.9.0 (29.06.2022)
 
