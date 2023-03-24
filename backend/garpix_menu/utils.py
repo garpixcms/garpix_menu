@@ -32,7 +32,7 @@ def get_menus(current_path):
     from garpix_menu.models import MenuItem
 
     menus = {}
-    menu_items = MenuItem.on_site.filter(is_active=True, parent=None).order_by('sort', 'title')
+    menu_items = MenuItem.on_site.prefetch_related('sites').filter(is_active=True, parent=None).order_by('sort', 'title')
     for menu_type_arr in settings.CHOICE_MENU_TYPES:
         menu = list(filter(lambda item: item.menu_type == menu_type_arr[0], menu_items))
         menus[menu_type_arr[0]] = []
