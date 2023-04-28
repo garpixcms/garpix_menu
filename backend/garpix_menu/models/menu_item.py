@@ -21,13 +21,19 @@ class MenuItem(LinkMixin, MPTTModel):
         upload_to=get_file_path, verbose_name='Иконка', blank=True, null=True,
         validators=[validate_type, validate_size]
     )
-    menu_type = models.CharField(default='', max_length=100, choices=settings.CHOICE_MENU_TYPES, verbose_name='Тип меню')
+    menu_type = models.CharField(default='', max_length=100, choices=settings.CHOICE_MENU_TYPES,
+                                 verbose_name='Тип меню')
     is_active = models.BooleanField(default=True, verbose_name='Включено')
     target_blank = models.BooleanField(default=False, verbose_name='Открывать в новом окне')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-    sort = models.IntegerField(default=100, verbose_name='Сортировка', help_text='Чем меньше число, тем выше будет элемент в списке.')
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True, verbose_name='Родительский пункт меню', on_delete=models.CASCADE)
+    sort = models.IntegerField(default=100, verbose_name='Сортировка',
+                               help_text='Чем меньше число, тем выше будет элемент в списке.')
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
+                            verbose_name='Родительский пункт меню', on_delete=models.CASCADE)
+    css_class = models.CharField(max_length=100, null=True, blank=True,
+                                 help_text='Можно задать, если пункту меню необходима особенная стилизация',
+                                 verbose_name='CSS класс')
     sites = models.ManyToManyField(Site, default=get_all_sites, verbose_name='Сайты для отображения')
     is_current = False
     is_current_full = False
@@ -37,7 +43,7 @@ class MenuItem(LinkMixin, MPTTModel):
     class Meta:
         verbose_name = 'Пункт меню'
         verbose_name_plural = 'Пункты меню'
-        ordering = ('sort', )
+        ordering = ('sort',)
         abstract = False
 
     def __str__(self):

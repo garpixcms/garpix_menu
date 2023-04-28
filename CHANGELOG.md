@@ -1,3 +1,7 @@
+### 1.16.0 (28.04.2023)
+
+- `css_class` field added to menu item
+
 ### 1.15.0 (17.03.2023)
 
 - Prefetching relations in `utils.get_menus`
