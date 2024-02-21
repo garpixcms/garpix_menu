@@ -213,11 +213,11 @@ CHOICE_MENU_TYPES = [(k, v['title']) for k, v in MENU_TYPES.items()]
 
 # Changelog
 
-Смотрите [CHANGELOG.md](../../CHANGELOG.md).
+Смотрите [CHANGELOG.md](https://github.com/garpixcms/garpix_menu/blob/master/CHANGELOG.md).
 
 # Contributing
 
-Смотрите [CONTRIBUTING.md](../../CONTRIBUTING.md).
+Смотрите [CONTRIBUTING.md](https://github.com/garpixcms/garpix_menu/blob/master/CONTRIBUTING.md).
 
 # License
 

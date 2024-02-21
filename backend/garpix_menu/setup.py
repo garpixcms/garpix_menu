@@ -8,14 +8,14 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='garpix_menu',
-    version='1.17.0-rc2',
+    version='1.17.0',
     description='',
     long_description=long_description,
     long_description_content_type='text/markdown',
     project_urls={
         'Documentation': 'https://docs.garpixcms.ru/packages/garpix_menu/',
         'GitHub': 'https://github.com/garpixcms/garpix_menu/',
-        'Changelog': 'https://pypi.org/project/garpix-menu/CHANGELOG.md/',
+        'Changelog': 'https://github.com/garpixcms/garpix_menu/blob/master/CHANGELOG.md/',
     },
     author='Garpix LTD',
     author_email='info@garpix.com',
