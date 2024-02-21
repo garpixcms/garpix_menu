@@ -3,14 +3,20 @@ from os import path
 
 here = path.join(path.abspath(path.dirname(__file__)), 'garpix_menu')
 
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name='garpix_menu',
-    version='1.16.0',
+    version='1.17.0-rc2',
     description='',
     long_description=long_description,
+    long_description_content_type='text/markdown',
+    project_urls={
+        'Documentation': 'https://docs.garpixcms.ru/packages/garpix_menu/',
+        'GitHub': 'https://github.com/garpixcms/garpix_menu/',
+        'Changelog': 'https://pypi.org/project/garpix-menu/CHANGELOG.md/',
+    },
     author='Garpix LTD',
     author_email='info@garpix.com',
     license='MIT',
