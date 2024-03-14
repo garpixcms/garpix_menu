@@ -9,7 +9,7 @@ from ..mixins import LinkMixin
 from ..utils import check_is_home
 from ..validators import validate_type, validate_size
 from garpix_utils.managers import GCurrentSiteManager
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class MenuItem(LinkMixin, MPTTModel):
