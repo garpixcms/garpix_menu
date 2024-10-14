@@ -14,7 +14,6 @@ garpix-utils = "==1.10.0-rc25"
 django = "==4.2"
 mistune = "==0.8.4"
 psycopg2-binary = ">=2.9.3"
-django-modeltranslation = "==0.19.8"
 
 [dev-packages]
 
