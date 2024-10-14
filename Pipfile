@@ -9,11 +9,12 @@ coverage = "*"
 twine = "*"
 m2r = "*"
 garpix-qa = "*"
-garpix-page = "==2.49.0-rc4"
-garpix-utils = "==1.10.0-rc25"
+garpix-page = ">=2.49.0-rc7, <3.0.0"
+garpix-utils = ">=1.10.0-rc25, <2.0.0"
 django = "==4.2"
 mistune = "==0.8.4"
 psycopg2-binary = ">=2.9.3"
+django-modeltranslation = "==0.19.8"
 
 [dev-packages]
 

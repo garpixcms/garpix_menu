@@ -47,6 +47,9 @@ class MenuItem(LinkMixin, MPTTModel):
         ordering = ('sort',)
         abstract = False
 
+    class MPTTMeta:
+        order_insertion_by = ['sort']
+
     def __str__(self):
         if self.title_for_admin:
             return self.title_for_admin
